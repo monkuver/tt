@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./ui/styles/style.css">
+</head>
+
+<body>
+  <div class="wrapper" ng-controller="handleController as handle">
+    <div class="left-col">
+      <h2>Список</h2>
+      <ul ng-if="handle.handledStrings.length">
+        <li ng-repeat="item in handle.handledStrings track by $index">
+          <span ng-bind="item.string"></span><span ng-bind="item.quantity"></span></li>
+      </ul>
+    </div>
+    <div class="right-col">
+      <form name="handleStringsForm" ng-submit="handle.applyForm(handleStringForm)">
+        <label for="stringInput">Введите строку</label>
+        <input type="text" id="stringInput" ng-model="handle.string">
+        <br>
+        <input type="submit" value="Обработать">
+      </form>
+      <span class="result" ng-bind="handle.numberQuantity"></span>
+    </div>
+  </div>
+  <script src="./ui/vendor/angular.min.js"></script>
+  <script src="./ui/app/index.module.js"></script>
+  <script src="./ui/app/handleForm/handle.controller.js"></script>
+</body>
+
+</html>
